@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap');
+
+.Father {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.Main {
+   border-radius: 40px;
+   display: flex;
+   background: #ffffff;
+   width: 80vw;
+   height: 40vh;
+   justify-content: center;
+   align-items: center;
+}
+
+.Login {
+   font-family: 'Jost', sans-serif;
+}
+
+.LoginDiv {
+   position: relative;
+   left: 12vw;
+}
+
+.Button {
+   position: relative;
+   margin-left: 13vw;
+   margin-top: 5vh;
+}

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
+
+.Father {
+    display: flex;
+}
+
+.Mother {
+    margin-left: 5vw;
+    margin-top: 2vh;
+}
+
+.Dashboard {
+    font-family: 'Jost', sans-serif;
+}
+
+.Content {
+    font-family: 'Jost', sans-serif;
+}
