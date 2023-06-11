@@ -1,0 +1,18 @@
+.Father {
+    margin-top: 5vh;
+    margin-left: 5vw;
+}
+
+.Pagination {
+    position: relative;
+    top: 2vh;
+    left: 4vw;
+    width: 90vw;
+}
+
+.PaginationTop {
+    position: relative;
+    bottom: 4vh;
+    left: 4vw;
+    width: 90vw;
+}

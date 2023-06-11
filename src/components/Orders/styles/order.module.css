@@ -1,0 +1,30 @@
+.Wrap {
+    display: flex;
+    justify-content: space-around;
+}
+
+.Text {
+    margin-left: 5vw;
+}
+
+.Father {
+    background: rgba(255, 255, 255, 0.54);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.2px);
+    -webkit-backdrop-filter: blur(7.2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 2vh;
+    width: 90vw;
+    height: 10vh;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Arrow {
+    position: relative;
+    top: 1vw;
+    width: 7vw;
+    height: 3vh;
+}

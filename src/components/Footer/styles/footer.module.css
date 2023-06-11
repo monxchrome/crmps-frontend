@@ -1,0 +1,28 @@
+.Father {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 5vh;
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+    height: 7vh;
+}
+
+.Img {
+    width: 6vw;
+    height: 3vh;
+}
+
+.Home {
+    align-items: center;
+}
+
+.ImgDiv {
+    position: relative;
+    left: 2vw;
+    top: 1vh;
+}

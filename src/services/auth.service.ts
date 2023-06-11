@@ -22,9 +22,9 @@ class AuthService {
         this.setTokens(data)
     }
 
-    private setTokens({access, refresh}: ITokens): void {
-        localStorage.setItem(this.accessKey, access)
-        localStorage.setItem(this.refreshKey, refresh)
+    private setTokens({accessToken, refreshToken}: ITokens): void {
+        localStorage.setItem(this.accessKey, accessToken)
+        localStorage.setItem(this.refreshKey, refreshToken)
     }
 
     getAccessToken(): string {
