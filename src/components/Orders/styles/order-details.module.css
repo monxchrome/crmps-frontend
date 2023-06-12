@@ -1,0 +1,58 @@
+.Father {
+    border-radius: 20px;
+    margin-left: 5vw;
+    width: 90vw;
+    height: 100vh;
+    background: #ffffff;
+}
+
+.Mother {
+    display: flex;
+}
+
+.ImgDiv {
+    width: 20vw;
+    height: 10vh;
+    margin-left: 5vw;
+    margin-top: 5vh;
+}
+
+.Img {
+    width: 20vw;
+    height: 10vh;
+}
+
+.FIO {
+    margin-left: 5vw;
+    margin-top: 5vh;
+}
+
+.DescDiv {
+    margin-top: 5vh;
+}
+
+.Wrap {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5vh;
+}
+
+.BottomWrap {
+    margin-left: 5vw;
+    display: flex;
+    margin-bottom: 2vh;
+}
+
+.Text {
+    margin-top: 2px;
+    margin-left: 5vw;
+}
+
+.TextDiv{
+    margin-left: 25vw;
+}
+
+.InputDiv{
+    margin-top: 2vh;
+    margin-left: 10vw;
+}
