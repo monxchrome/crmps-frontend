@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Spacer, Text} from "@nextui-org/react";
+import {Button, Input, Spacer, Text} from "@nextui-org/react";
 import css from './styles/order-details.module.css'
 import CakeTwoToneIcon from '@mui/icons-material/CakeTwoTone';
 import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
@@ -8,9 +8,21 @@ import PaidTwoToneIcon from '@mui/icons-material/PaidTwoTone';
 import LocalPhoneTwoToneIcon from '@mui/icons-material/LocalPhoneTwoTone';
 import FunctionsTwoToneIcon from '@mui/icons-material/FunctionsTwoTone';
 import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
+import {SubmitHandler, useForm} from "react-hook-form";
+import {useAppDispatch} from "../../hooks/redux.hooks";
+import {commentActions} from "../../redux/slice/comment.slice";
+import {IComment} from "../../interfaces/comment.interface";
+import {useParams} from "react-router-dom";
 
 const OrderDetails = ({order}:{order: any}) => {
     const avatar = 'https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png'
+    const {handleSubmit, register, formState: {isValid}} = useForm<IComment>();
+    const dispatch = useAppDispatch();
+    const {orderId} = useParams();
+
+    const comment: SubmitHandler<IComment> = async (commentData) => {
+        await dispatch(commentActions.create({ comment: commentData, id: orderId }));
+    };
 
     const {
         name,
@@ -82,9 +94,17 @@ const OrderDetails = ({order}:{order: any}) => {
                 <div className={css.TextDiv}>
                     <Text h3>Add a comment</Text>
                 </div>
-                <div className={css.InputDiv}>
-                    <Input placeholder="Comment me..." width="70vw"/>
-                </div>
+                <form onSubmit={handleSubmit(comment)}>
+                    <Input
+                        placeholder="Comment me..."
+                        width="70vw"
+                        className={css.InputDiv}
+                        {...register('title', {required: true})}
+                    />
+                    <Button shadow color="primary" auto type="submit" disabled={!isValid}>
+                        Comment
+                    </Button>
+                </form>
             </div>
         </div>
     );

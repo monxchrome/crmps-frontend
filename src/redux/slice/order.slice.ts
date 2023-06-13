@@ -12,7 +12,7 @@ interface IState {
     page: number
     errors: IError,
     trigger: boolean,
-    carForUpdate: IOrder
+    orderForUpdate: IOrder
 }
 
 const initialState: IState = {
@@ -21,7 +21,7 @@ const initialState: IState = {
     next: null,
     errors: null,
     page: 1,
-    carForUpdate: null,
+    orderForUpdate: null,
     trigger: false
 };
 
@@ -43,7 +43,7 @@ const slice = createSlice({
     initialState,
     reducers: {
         setCarForUpdate: (state, action) => {
-            state.carForUpdate = action.payload
+            state.orderForUpdate = action.payload
         }
     },
     extraReducers: builder =>
