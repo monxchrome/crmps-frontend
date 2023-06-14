@@ -2,7 +2,7 @@
     border-radius: 20px;
     margin-left: 5vw;
     width: 90vw;
-    height: 100vh;
+    height: 110vh;
     background: #ffffff;
 }
 
@@ -49,10 +49,23 @@
 }
 
 .TextDiv{
-    margin-left: 25vw;
+    position: relative;
+    bottom: 1vh;
+    left: 25vw;
 }
 
 .InputDiv{
     margin-top: 2vh;
     margin-left: 10vw;
+}
+
+.Button {
+    margin-top: 1vh;
+    margin-left: 30vw;
+}
+
+.StatusDiv {
+    position: relative;
+    top: 1vh;
+    left: 5vw;
 }

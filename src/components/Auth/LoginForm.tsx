@@ -16,7 +16,7 @@ const LoginForm = () => {
         const {meta: {requestStatus}} = await dispatch(authActions.login(admin));
 
         if (requestStatus === 'fulfilled') {
-            navigate('/')
+            navigate('/orders')
         }
     };
 

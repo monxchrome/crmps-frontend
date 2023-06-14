@@ -22,7 +22,7 @@ const initialState: IState = {
     page: 1,
     commentForUpdate: null,
     trigger: false
-};
+}
 
 const create = createAsyncThunk<void, { comment: IComment, id: string }>(
     'commentSlice/create',
@@ -41,5 +41,5 @@ const commentActions = {
 }
 
 export {
-    commentActions
+    commentActions,
 }

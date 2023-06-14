@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Input, Spacer, Text} from "@nextui-org/react";
 import css from './styles/order-details.module.css'
 import CakeTwoToneIcon from '@mui/icons-material/CakeTwoTone';
@@ -13,12 +13,15 @@ import {useAppDispatch} from "../../hooks/redux.hooks";
 import {commentActions} from "../../redux/slice/comment.slice";
 import {IComment} from "../../interfaces/comment.interface";
 import {useParams} from "react-router-dom";
+import Comment from "../Comments/Comment";
 
 const OrderDetails = ({order}:{order: any}) => {
     const avatar = 'https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png'
+
     const {handleSubmit, register, formState: {isValid}} = useForm<IComment>();
     const dispatch = useAppDispatch();
     const {orderId} = useParams();
+    const [visibleComments, setVisibleComments] = useState<IComment[]>([]);
 
     const comment: SubmitHandler<IComment> = async (commentData) => {
         await dispatch(commentActions.create({ comment: commentData, id: orderId }));
@@ -38,6 +41,14 @@ const OrderDetails = ({order}:{order: any}) => {
         manager,
         comments
     } = order
+
+    useEffect(() => {
+        if (comments.length > 2) {
+            setVisibleComments(comments.slice(-2));
+        } else {
+            setVisibleComments(comments);
+        }
+    }, [comments]);
 
     return (
         <div className={css.Father}>
@@ -94,6 +105,13 @@ const OrderDetails = ({order}:{order: any}) => {
                 <div className={css.TextDiv}>
                     <Text h3>Add a comment</Text>
                 </div>
+                <div>
+                    {visibleComments.map((comment): any => {
+                        return (
+                            <Comment key={comment._id} comment={comment} user={comment.user}/>
+                        )
+                    })}
+                </div>
                 <form onSubmit={handleSubmit(comment)}>
                     <Input
                         placeholder="Comment me..."
@@ -101,10 +119,15 @@ const OrderDetails = ({order}:{order: any}) => {
                         className={css.InputDiv}
                         {...register('title', {required: true})}
                     />
-                    <Button shadow color="primary" auto type="submit" disabled={!isValid}>
+                    <Button className={css.Button} shadow color="primary" auto type="submit" disabled={!isValid}>
                         Comment
                     </Button>
                 </form>
+            </div>
+            <div>
+                <div className={css.StatusDiv}>
+                    <Text>status: {status == null ? 'null': status}</Text>
+                </div>
             </div>
         </div>
     );
