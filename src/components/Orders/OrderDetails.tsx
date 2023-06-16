@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Input, Spacer, Text} from "@nextui-org/react";
+import {Button, Input, Modal, Spacer, Text} from "@nextui-org/react";
 import css from './styles/order-details.module.css'
 import CakeTwoToneIcon from '@mui/icons-material/CakeTwoTone';
 import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
@@ -14,6 +14,7 @@ import {commentActions} from "../../redux/slice/comment.slice";
 import {IComment} from "../../interfaces/comment.interface";
 import {useParams} from "react-router-dom";
 import Comment from "../Comments/Comment";
+import OrderEdit from "./OrderEdit";
 
 const OrderDetails = ({order}:{order: any}) => {
     const avatar = 'https://assets.stickpng.com/images/585e4bf3cb11b227491c339a.png'
@@ -22,6 +23,11 @@ const OrderDetails = ({order}:{order: any}) => {
     const dispatch = useAppDispatch();
     const {orderId} = useParams();
     const [visibleComments, setVisibleComments] = useState<IComment[]>([]);
+    const [visible, setVisible] = React.useState(false);
+    const handler = () => setVisible(true);
+    const closeHandler = () => {
+        setVisible(false);
+    };
 
     const comment: SubmitHandler<IComment> = async (commentData) => {
         await dispatch(commentActions.create({ comment: commentData, id: orderId }));
@@ -61,7 +67,7 @@ const OrderDetails = ({order}:{order: any}) => {
                         <Text h3>{name} {surname}</Text>
                     </div>
                     <div>
-                        <Text>{email == null ? 'null': email}</Text>
+                        <Text className={css.Email}>{email == null ? 'null': email}</Text>
                     </div>
                 </div>
             </div>
@@ -129,6 +135,27 @@ const OrderDetails = ({order}:{order: any}) => {
                     <Text>status: {status == null ? 'null': status}</Text>
                 </div>
             </div>
+            <div className={css.ButtonDiv}>
+                <Button shadow color="success" className={css.Edit} onPress={handler}>
+                    Edit
+                </Button>
+            </div>
+            <Modal
+                closeButton
+                blur
+                aria-labelledby="modal-title"
+                open={visible}
+                width="90vw"
+                onClose={closeHandler}>
+                <Modal.Header>
+                    <Text b size={18}>
+                        {name}
+                    </Text>
+                </Modal.Header>
+                <Modal.Body>
+                    <OrderEdit/>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 };

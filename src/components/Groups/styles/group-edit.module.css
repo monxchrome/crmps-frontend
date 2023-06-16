@@ -1,0 +1,9 @@
+.Father {
+    display: grid;
+    justify-content: center;
+}
+
+.Button {
+    margin-top: 3vh;
+    margin-left: 20vw;
+}

@@ -1,37 +1,36 @@
 import {IError} from "../../interfaces/error.interface";
-import {IOrder} from "../../interfaces/order.interface";
+import {IGroup} from "../../interfaces/group.interface";
 import {createAsyncThunk, createSlice, isFulfilled, isRejectedWithValue} from "@reduxjs/toolkit";
 import {IPagination} from "../../interfaces/pagination.interface";
 import {AxiosError} from "axios";
-import {orderService} from "../../services/order.service";
-import {IGroup} from "../../interfaces/group.interface";
 import {groupService} from "../../services/group.service";
+import {commentService} from "../../services/comment.service";
 
 interface IState {
-    orders: IOrder[],
+    groups: IGroup[],
     prev: string;
     next: string;
     page: number
     errors: IError,
     trigger: boolean,
-    orderForUpdate: IOrder
+    groupForUpdate: IGroup
 }
 
 const initialState: IState = {
-    orders: [],
+    groups: [],
     prev: null,
     next: null,
     errors: null,
     page: 1,
-    orderForUpdate: null,
+    groupForUpdate: null,
     trigger: false
 };
 
-const getAll = createAsyncThunk<IPagination<IOrder[]>, { page: string }>(
-    'orderSlice/getAll',
-    async ({page}: any, {rejectWithValue}) => {
+const getAll = createAsyncThunk<IPagination<IGroup[]>>(
+    'groupSlice/getAll',
+    async (_, {rejectWithValue}) => {
         try {
-            const {data} = await orderService.getAll(page);
+            const {data} = await groupService.getAll();
             return data
         } catch (e) {
             const err = e as AxiosError
@@ -53,18 +52,18 @@ const create = createAsyncThunk<void, { group: IGroup, id: string }>(
 )
 
 const slice = createSlice({
-    name: 'orderSlice',
+    name: 'groupSlice',
     initialState,
     reducers: {
         setCarForUpdate: (state, action) => {
-            state.orderForUpdate = action.payload
+            state.groupForUpdate = action.payload
         }
     },
     extraReducers: builder =>
         builder
             .addCase(getAll.fulfilled, (state, action) => {
                 const {prev, next, data, page} = action.payload;
-                state.orders = data
+                state.groups = data
                 state.prev = prev
                 state.next = next
                 state.page = page
@@ -77,15 +76,15 @@ const slice = createSlice({
             })
 });
 
-const {actions, reducer: orderReducer} = slice;
+const {actions, reducer: groupReducer} = slice;
 
-const orderActions = {
+const groupActions = {
     ...actions,
     getAll,
     create
 }
 
 export {
-    orderActions,
-    orderReducer
+    groupActions,
+    groupReducer
 }

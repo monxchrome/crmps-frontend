@@ -2,7 +2,7 @@
     border-radius: 20px;
     margin-left: 5vw;
     width: 90vw;
-    height: 110vh;
+    height: 120vh;
     background: #ffffff;
 }
 
@@ -49,9 +49,8 @@
 }
 
 .TextDiv{
-    position: relative;
-    bottom: 1vh;
-    left: 25vw;
+    margin-bottom: 1vh;
+    margin-left: 25vw;
 }
 
 .InputDiv{
@@ -60,12 +59,29 @@
 }
 
 .Button {
-    margin-top: 1vh;
-    margin-left: 30vw;
+    display: flex;
+    margin-top: 3vh;
+    margin-left: 32vw;
 }
 
 .StatusDiv {
+    display: flex;
+    margin-top: 5vh;
+    justify-content: center;
+}
+
+.ButtonDiv {
     position: relative;
-    top: 1vh;
-    left: 5vw;
+    top: 7vh;
+    display: flex;
+    justify-content: center;
+}
+
+.Edit {
+    position: absolute;
+    bottom: 0;
+}
+
+.Email {
+    font-size: 3vw;
 }
