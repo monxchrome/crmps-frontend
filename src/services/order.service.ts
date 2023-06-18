@@ -12,6 +12,10 @@ class OrderService {
     getById(id: string): IRes<IPagination<IOrder[]>> {
         return axiosService.get(urls.orders.byId(id))
     }
+
+    update(id: string, order: IOrder): IRes<IOrder> {
+        return axiosService.put(urls.orders.byId(id), order)
+    }
 }
 
 export const orderService = new OrderService()

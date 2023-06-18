@@ -43,7 +43,7 @@ const OrderDetails = ({order}:{order: any}) => {
         course_format,
         status,
         sum,
-        alreadyPaid,
+        already_paid,
         manager,
         comments
     } = order
@@ -92,7 +92,7 @@ const OrderDetails = ({order}:{order: any}) => {
                 <div className={css.Wrap}>
                     <PaidTwoToneIcon sx={{fontSize: 40}}/>
                     <Text className={css.Text} h4>Paid:</Text>
-                    <Text className={css.Text} h4>{alreadyPaid == null ? 'null': alreadyPaid}</Text>
+                    <Text className={css.Text} h4>{already_paid == null ? 'null': already_paid}</Text>
                 </div>
                 <div className={css.BottomWrap}>
                     <LocalPhoneTwoToneIcon sx={{fontSize: 26}}/>

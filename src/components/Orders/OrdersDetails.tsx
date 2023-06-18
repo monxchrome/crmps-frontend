@@ -8,7 +8,6 @@ const OrdersDetails = ({orderId}: any) => {
     useEffect(() => {
         orderService.getById(orderId).then(({data}) => setOrder([data]))
     }, [orderId])
-    console.log(order)
 
     return (
         <div>

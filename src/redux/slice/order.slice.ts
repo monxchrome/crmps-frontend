@@ -52,11 +52,23 @@ const create = createAsyncThunk<void, { group: IGroup, id: string }>(
     }
 )
 
+const update = createAsyncThunk<void, { order: IOrder, id: string }>(
+    'orderSlice/update',
+    async ({id, order}, {rejectWithValue}) => {
+        try {
+            await orderService.update(id, order)
+        } catch (e) {
+            const err = e as AxiosError
+            return rejectWithValue(err.response.data)
+        }
+    }
+)
+
 const slice = createSlice({
     name: 'orderSlice',
     initialState,
     reducers: {
-        setCarForUpdate: (state, action) => {
+        setOrderForUpdate: (state, action) => {
             state.orderForUpdate = action.payload
         }
     },
@@ -69,8 +81,14 @@ const slice = createSlice({
                 state.next = next
                 state.page = page
             })
+            .addCase(update.fulfilled, state => {
+                state.orderForUpdate = null
+            })
             .addMatcher(isFulfilled(), state => {
                 state.errors = null
+            })
+            .addMatcher(isFulfilled(create, update), state => {
+                state.trigger = !state.trigger
             })
             .addMatcher(isRejectedWithValue(), (state, action) => {
                 state.errors = action.payload
@@ -82,7 +100,8 @@ const {actions, reducer: orderReducer} = slice;
 const orderActions = {
     ...actions,
     getAll,
-    create
+    create,
+    update
 }
 
 export {
