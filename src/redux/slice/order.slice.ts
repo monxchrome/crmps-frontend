@@ -29,9 +29,9 @@ const initialState: IState = {
 
 const getAll = createAsyncThunk<IPagination<IOrder[]>, { page: string }>(
     'orderSlice/getAll',
-    async ({page}: any, {rejectWithValue}) => {
+    async ({page, nameGte, nameLte}: any, {rejectWithValue}) => {
         try {
-            const {data} = await orderService.getAll(page);
+            const {data} = await orderService.getAll(page, nameGte, nameLte);
             return data
         } catch (e) {
             const err = e as AxiosError

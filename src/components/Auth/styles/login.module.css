@@ -12,7 +12,7 @@
    display: flex;
    background: #ffffff;
    width: 80vw;
-   height: 40vh;
+   height: 50vh;
    justify-content: center;
    align-items: center;
 }
@@ -22,12 +22,17 @@
 }
 
 .LoginDiv {
-   position: relative;
-   left: 12vw;
+   display: flex;
+   justify-content: center;
 }
 
 .Button {
-   position: relative;
-   margin-left: 13vw;
+   display: flex;
+   justify-content: center;
    margin-top: 5vh;
+}
+
+.Form {
+   display: flex;
+   justify-content: center;
 }

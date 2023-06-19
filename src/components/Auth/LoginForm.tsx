@@ -24,22 +24,26 @@ const LoginForm = () => {
         <div>
             <form onSubmit={handleSubmit(login)} className={css.Father}>
                 <div className={css.Main}>
-                    <div className={css.Form}>
+                    <div>
                         <div className={css.LoginDiv}>
                             <Text h2 className={css.Login}>Login</Text>
                         </div>
-                        <Input
-                            clearable
-                            label="Email"
-                            placeholder="Email"
-                            initialValue="admin@gmail.com"
-                            {...register('email', {required: true})} />
+                        <div className={css.Form}>
+                            <Input
+                                clearable
+                                label="Email"
+                                placeholder="Email"
+                                initialValue="admin@gmail.com"
+                                {...register('email', {required: true})} />
+                        </div>
                         <Spacer y={1.6} />
-                        <Input.Password
-                            size="sm"
-                            labelPlaceholder="Password"
-                            initialValue="admin"
-                            {...register('password', {required: true})}  />
+                        <div className={css.Form}>
+                            <Input.Password
+                                size="sm"
+                                labelPlaceholder="Password"
+                                initialValue="admin"
+                                {...register('password', {required: true})}  />
+                        </div>
                         <div className={css.Button}>
                             <Button shadow color="primary" auto type="submit" disabled={!isValid}>
                                 Login

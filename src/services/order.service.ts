@@ -5,8 +5,18 @@ import {IPagination} from "../interfaces/pagination.interface";
 import {IOrder} from "../interfaces/order.interface";
 
 class OrderService {
-    getAll(page=1): IRes<IPagination<IOrder[]>> {
-        return axiosService.get(urls.orders.orders, {params: {page}})
+    getAll(page= 1, nameGte?: string, nameLte?: string): IRes<IPagination<IOrder[]>> {
+        const params: any = { page };
+
+        if (nameGte) {
+            params["name[gte]"] = nameGte;
+        }
+
+        if (nameLte) {
+            params["name[lte]"] = nameLte;
+        }
+
+        return axiosService.get(urls.orders.orders, { params });
     }
 
     getById(id: string): IRes<IPagination<IOrder[]>> {

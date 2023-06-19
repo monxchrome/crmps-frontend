@@ -4,15 +4,28 @@
 }
 
 .Pagination {
-    position: relative;
-    top: 2vh;
-    left: 4vw;
+    display: flex;
+    justify-content: center;
     width: 90vw;
 }
 
 .PaginationTop {
-    position: relative;
-    bottom: 4vh;
-    left: 4vw;
+    display: flex;
+    justify-content: center;
     width: 90vw;
+}
+
+.Autocomplete {
+    display: flex;
+    justify-content: center;
+}
+
+.Orders {
+    margin-top: 5vh;
+}
+
+.Wrap {
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-evenly;
 }

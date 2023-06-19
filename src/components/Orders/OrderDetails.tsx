@@ -66,10 +66,10 @@ const OrderDetails = ({order}:{order: any}) => {
                     <div>
                         <Text h3>{name} {surname}</Text>
                     </div>
-                    <div>
-                        <Text className={css.Email}>{email == null ? 'null': email}</Text>
-                    </div>
                 </div>
+            </div>
+            <div className={css.EmailDiv}>
+                <Text className={css.Email}>{email == null ? 'null': email}</Text>
             </div>
             <Spacer/>
             <hr/>
@@ -119,15 +119,18 @@ const OrderDetails = ({order}:{order: any}) => {
                     })}
                 </div>
                 <form onSubmit={handleSubmit(comment)}>
-                    <Input
-                        placeholder="Comment me..."
-                        width="70vw"
-                        className={css.InputDiv}
-                        {...register('title', {required: true})}
-                    />
-                    <Button className={css.Button} shadow color="primary" auto type="submit" disabled={!isValid}>
-                        Comment
-                    </Button>
+                    <div className={css.InputDiv}>
+                        <Input
+                            placeholder="Comment me..."
+                            width="70vw"
+                            {...register('title', {required: true})}
+                        />
+                    </div>
+                    <div className={css.Button}>
+                        <Button shadow color="primary" auto type="submit" disabled={!isValid}>
+                            Comment
+                        </Button>
+                    </div>
                 </form>
             </div>
             <div>

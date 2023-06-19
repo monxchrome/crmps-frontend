@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className={css.ImgDiv}>
                     <img src={src} alt="" className={css.Img}/>
                 </div>
-                <div>
+                <div className={css.HomeText}>
                     <Text>Home</Text>
                 </div>
             </div>
