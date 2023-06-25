@@ -1,15 +1,16 @@
-import React from 'react';
+import React from "react";
+import { useParams } from "react-router-dom";
+
 import OrdersDetails from "../components/Orders/OrdersDetails";
-import {useParams} from "react-router-dom";
 
 const OrderDetailsPage = () => {
-    const {orderId} = useParams();
+  const { orderId } = useParams();
 
-    return (
-        <div>
-            <OrdersDetails orderId={orderId}/>
-        </div>
-    );
+  return (
+    <div>
+      <OrdersDetails orderId={orderId} />
+    </div>
+  );
 };
 
 export default OrderDetailsPage;
