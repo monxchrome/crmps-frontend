@@ -1,23 +1,185 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap');
-.Father {
-    width: 70vw;
+
+/*Small portrait phones*/
+@media (max-width: 575.98px) {
+    .Father {
+        padding-bottom: 1vh;
+    }
+
+    .GroupText {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Button {
+        margin-top: 1vh;
+    }
+
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Wrap2 {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+
+    .PCs {
+        display: none;
+    }
 }
 
-.GroupText {
-    font-family: 'Jost', sans-serif;
+/* Small phones with landscape */
+@media (max-width: 767.98px) and (min-width: 575.98px) {
+    .Father {
+        padding-bottom: 1vh;
+    }
+
+    .GroupText {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Button {
+        margin-top: 1vh;
+    }
+
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Wrap2 {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+
+    .PCs {
+        display: none;
+    }
 }
 
-.Button {
-    margin-top: 1vh;
+/* Medium pads */
+@media (max-width: 991.98px) and (min-width: 767.98px) {
+    .Father {
+        padding-bottom: 1vh;
+    }
+
+    .GroupText {
+        font-size: 2rem;
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Button {
+        margin-top: 1vh;
+    }
+
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Wrap2 {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+
+    .PCs {
+        display: none;
+    }
 }
 
-.Wrap {
-    display: flex;
-    justify-content: space-around;
+/* X-Large computers */
+@media (max-width: 1399.98px) and (min-width: 1199.98px) {
+    .Father {
+        padding-bottom: 1vh;
+    }
+
+    .GroupText {
+        font-size: 2rem;
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Button {
+        margin-top: 1vh;
+    }
+
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Wrap2 {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+
+    .Comments {
+
+    }
 }
 
-.Wrap2 {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 5vh;
+/* XX-Large computers */
+@media (min-width: 1399.98px) {
+
+    .Father {
+        padding-bottom: 1vh;
+    }
+
+    .GroupText {
+        font-size: 2rem;
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Button {
+        margin-top: 1vh;
+    }
+
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Wrap2 {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+        margin-top: 5vh;
+    }
+
+    .Comments {
+
+    }
 }

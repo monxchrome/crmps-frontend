@@ -1,31 +1,122 @@
-.Father {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 5vh;
-    background: rgba(255, 255, 255, 0.16);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    width: 100%;
+/*Small portrait phones*/
+@media (max-width: 575.98px) {
+    .Father {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 5vh;
+        background: rgba(255, 255, 255, 0.16);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        width: 100%;
+    }
+
+    .Img {
+        width: 10%;
+        height: auto;
+    }
+
+    .Home {
+        margin-top: 1vh;
+    }
+
+    .HomeText {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ImgDiv {
+        display: flex;
+        justify-content: center;
+    }
 }
 
-.Img {
-    width: 10%;
-    height: auto;
+/* Small phones with landscape */
+@media (max-width: 767.98px) and (min-width: 575.98px) {
+    .Father {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 5vh;
+        background: rgba(255, 255, 255, 0.16);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        width: 100%;
+    }
+
+    .Img {
+        width: 10%;
+        height: auto;
+    }
+
+    .Home {
+        margin-top: 1vh;
+    }
+
+    .HomeText {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ImgDiv {
+        display: flex;
+        justify-content: center;
+    }
 }
 
-.Home {
-    margin-top: 1vh;
+/* Medium pads */
+@media (max-width: 991.98px) and (min-width: 767.98px) {
+    .Father {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 5vh;
+        background: rgba(255, 255, 255, 0.16);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        width: 100%;
+    }
+
+    .Img {
+        width: 20%;
+        height: auto;
+    }
+
+    .Home {
+        margin-top: 1vh;
+    }
+
+    .HomeText {
+        display: flex;
+        justify-content: center;
+    }
+
+    .ImgDiv {
+        display: flex;
+        justify-content: center;
+    }
+
+    .HomeT {
+        font-size: 1.5rem;
+    }
 }
 
-.HomeText {
-    display: flex;
-    justify-content: center;
+/* X-Large computers */
+@media (max-width: 1399.98px) and (min-width: 1199.98px) {
+    .Father {
+        display: none;
+    }
 }
 
-.ImgDiv {
-    display: flex;
-    justify-content: center;
+/* XX-Large computers */
+@media (min-width: 1399.98px) {
+    .Father {
+        display: none;
+    }
 }

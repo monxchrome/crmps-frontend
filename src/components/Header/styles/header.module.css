@@ -1,19 +1,140 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
 
-.Father {
-    display: flex;
+/*Small portrait phones*/
+@media (max-width: 575.98px) {
+    .Father {
+        display: flex;
+    }
+
+    .Mother {
+        margin-left: 5vw;
+        margin-top: 2vh;
+    }
+
+    .Mother2 {
+        display: none;
+    }
+
+    .Dashboard {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Content {
+        font-family: 'Jost', sans-serif;
+    }
 }
 
-.Mother {
-    margin-left: 5vw;
-    margin-top: 2vh;
+/* Small phones with landscape */
+@media (max-width: 767.98px) and (min-width: 575.98px) {
+    .Father {
+        display: flex;
+    }
+
+    .Mother {
+        margin-left: 5vw;
+        margin-top: 2vh;
+    }
+
+    .Mother2 {
+        display: none;
+    }
+
+    .Dashboard {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Content {
+        font-family: 'Jost', sans-serif;
+    }
 }
 
-.Dashboard {
-    font-family: 'Jost', sans-serif;
+/* Medium pads */
+@media (max-width: 991.98px) and (min-width: 767.98px) {
+    .Father {
+        display: flex;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.54);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.2px);
+        -webkit-backdrop-filter: blur(7.2px);
+    }
+
+    .Mother {
+        margin-left: 5vw;
+        margin-top: 2vh;
+    }
+
+    .Mother2 {
+        margin-right: 5vw;
+        margin-top: 2vh;
+    }
+
+    .Dashboard {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Content {
+        font-family: 'Jost', sans-serif;
+    }
 }
 
-.Content {
-    font-family: 'Jost', sans-serif;
+/* X-Large computers */
+@media (max-width: 1399.98px) and (min-width: 1199.98px) {
+    .Father {
+        display: flex;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.54);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.2px);
+        -webkit-backdrop-filter: blur(7.2px);
+    }
+
+    .Mother {
+        margin-left: 5vw;
+        margin-top: 2vh;
+    }
+
+    .Mother2 {
+        margin-right: 5vw;
+        margin-top: 2vh;
+    }
+
+    .Dashboard {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Content {
+        font-family: 'Jost', sans-serif;
+    }
+}
+
+/* XX-Large computers */
+@media (min-width: 1399.98px) {
+    .Father {
+        display: flex;
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.54);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.2px);
+        -webkit-backdrop-filter: blur(7.2px);
+    }
+
+    .Mother {
+        margin-left: 5vw;
+        margin-top: 2vh;
+    }
+
+    .Mother2 {
+        margin-right: 5vw;
+        margin-top: 2vh;
+    }
+
+    .Dashboard {
+        font-family: 'Jost', sans-serif;
+    }
+
+    .Content {
+        font-family: 'Jost', sans-serif;
+    }
 }

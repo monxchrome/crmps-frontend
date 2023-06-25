@@ -14,6 +14,7 @@ interface IState {
     page: number
     errors: IError,
     trigger: boolean,
+    loading: boolean,
     orderForUpdate: IOrder
 }
 
@@ -24,21 +25,24 @@ const initialState: IState = {
     errors: null,
     page: 1,
     orderForUpdate: null,
+    loading: false,
     trigger: false
 };
 
 const getAll = createAsyncThunk<IPagination<IOrder[]>, { page: string }>(
     'orderSlice/getAll',
-    async ({page, nameGte, nameLte}: any, {rejectWithValue}) => {
+    async (params: any, { rejectWithValue }) => {
         try {
-            const {data} = await orderService.getAll(page, nameGte, nameLte);
-            return data
+            // @ts-ignore
+            await new Promise(resolve => setTimeout(() => resolve(), 1500))
+            const { data } = await orderService.getAll(params);
+            return data;
         } catch (e) {
-            const err = e as AxiosError
-            return rejectWithValue(err.response.data)
+            const err = e as AxiosError;
+            return rejectWithValue(err.response.data);
         }
     }
-)
+);
 
 const create = createAsyncThunk<void, { group: IGroup, id: string }>(
     'groupSlice/create',
@@ -80,18 +84,29 @@ const slice = createSlice({
                 state.prev = prev
                 state.next = next
                 state.page = page
+                state.loading = false
+            })
+            .addCase(getAll.pending, (state) => {
+                state.loading = true
             })
             .addCase(update.fulfilled, state => {
                 state.orderForUpdate = null
+                state.loading = false
+            })
+            .addCase(update.pending, (state) => {
+                state.loading = true
             })
             .addMatcher(isFulfilled(), state => {
                 state.errors = null
+                state.loading = false
             })
             .addMatcher(isFulfilled(create, update), state => {
                 state.trigger = !state.trigger
+                state.loading = false
             })
             .addMatcher(isRejectedWithValue(), (state, action) => {
                 state.errors = action.payload
+                state.loading = false
             })
 });
 

@@ -1,30 +1,338 @@
-.Wrap {
-    display: flex;
-    justify-content: space-around;
+/*Small portrait phones*/
+@media (max-width: 575.98px) {
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Text {
+        margin-left: 5vw;
+    }
+
+    .Father {
+        background: rgba(255, 255, 255, 0.54);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.2px);
+        -webkit-backdrop-filter: blur(7.2px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        margin-bottom: 2vh;
+        width: 90vw;
+        height: 10vh;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Arrow {
+        position: relative;
+        top: 1vw;
+        width: 5vw;
+        height: 3vh;
+    }
+
+    .Pads {
+        display: none;
+    }
+
+    .Hr {
+        display: none;
+    }
+
+    .Laptops {
+        display: none;
+    }
 }
 
-.Text {
-    margin-left: 5vw;
+/* Small phones with landscape */
+@media (max-width: 767.98px) and (min-width: 575.98px) {
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Text {
+        margin-left: 5vw;
+    }
+
+    .Father {
+        background: rgba(255, 255, 255, 0.54);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.2px);
+        -webkit-backdrop-filter: blur(7.2px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        margin-bottom: 2vh;
+        width: 90vw;
+        height: 10vh;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Arrow {
+        position: relative;
+        top: 1vw;
+        width: 5vw;
+        height: 3vh;
+    }
+
+    .Pads {
+        display: none;
+    }
+
+    .Hr {
+        display: none;
+    }
+
+    .Laptops {
+        display: none;
+    }
 }
 
-.Father {
-    background: rgba(255, 255, 255, 0.54);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(7.2px);
-    -webkit-backdrop-filter: blur(7.2px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    margin-bottom: 2vh;
-    width: 90vw;
-    height: 10vh;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+/* Medium pads */
+@media (max-width: 991.98px) and (min-width: 767.98px) {
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Text {
+        margin-left: 5vw;
+    }
+
+    .Father {
+        background: rgba(255, 255, 255, 0.54);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.2px);
+        -webkit-backdrop-filter: blur(7.2px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        margin-bottom: 2vh;
+        width: 90vw;
+        height: 10vh;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Arrow {
+        position: relative;
+        top: 1vw;
+        width: 5vw;
+        height: 3vh;
+    }
+
+    .Mobile {
+        display: none;
+    }
+
+    .Pads {
+        display: inline-flex;
+    }
+
+    .TextDiv {
+        width: 27vw;
+        padding: 3vw;
+    }
+    .TextDiv2 {
+        width: 10vw;
+        padding: 3vw;
+    }
+    .Button {
+        margin-top: 2vh;
+    }
+
+    .Hr {
+        display: block;
+    }
+
+    .Laptops {
+        display: none;
+    }
 }
 
-.Arrow {
-    position: relative;
-    top: 1vw;
-    width: 5vw;
-    height: 3vh;
+/* X-Large computers */
+@media (max-width: 1399.98px) and (min-width: 1199.98px) {
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Text {
+        margin-left: 5vw;
+    }
+
+    .Father {
+        background: rgba(255, 255, 255, 0.54);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.2px);
+        -webkit-backdrop-filter: blur(7.2px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        margin-bottom: 2vh;
+        width: 90vw;
+        height: 10vh;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Arrow {
+        position: relative;
+        top: 1vw;
+        width: 5vw;
+        height: 3vh;
+    }
+
+    .Mobile {
+        display: none;
+    }
+
+    .Pads {
+        display: none;
+    }
+
+    .TextDiv {
+        width: 10vw;
+        padding: 3vw;
+    }
+
+    .TextDiv1 {
+        width: 25vw;
+        padding: 3vw;
+    }
+
+    .TextDiv2 {
+        margin-top: 4vh;
+        padding-left: 3vw;
+    }
+
+    .TextDiv4 {
+        margin-top: 4vh;
+        margin-left: 1vw;
+    }
+
+    .TextDiv3 {
+        width: 5vw;
+        padding: 3vw;
+    }
+
+    .Button {
+        margin-top: 2vh;
+    }
+
+    .Hr {
+        display: block;
+    }
+
+    .Laptops {
+        display: inline-flex;
+        width: 90vw;
+        height: 12vh;
+    }
+
+    .Edit {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .InputDiv {
+        position: relative;
+        bottom: 2vw;
+    }
+}
+
+/* XX-Large computers */
+@media (min-width: 1399.98px) {
+    .Wrap {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .Text {
+        margin-left: 5vw;
+    }
+
+    .Father {
+        background: rgba(255, 255, 255, 0.54);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(7.2px);
+        -webkit-backdrop-filter: blur(7.2px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        margin-bottom: 2vh;
+        width: 90vw;
+        height: 10vh;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .Arrow {
+        position: relative;
+        top: 1vw;
+        width: 5vw;
+        height: 3vh;
+    }
+
+    .Mobile {
+        display: none;
+    }
+
+    .Pads {
+        display: none;
+    }
+
+    .TextDiv {
+        width: 10vw;
+        margin-top: 4vh;
+        padding-left: 3vw;
+    }
+
+    .TextDiv1 {
+        width: 25vw;
+        margin-top: 4vh;
+        padding-left: 3vw;
+    }
+
+    .TextDiv2 {
+        margin-top: 4vh;
+        padding-left: 3vw;
+    }
+
+    .TextDiv4 {
+        margin-top: 4vh;
+        margin-left: 1vw;
+    }
+
+    .TextDiv3 {
+        width: 5vw;
+        margin-top: 4vh;
+        padding-left: 3vw;
+    }
+
+    .Button {
+        margin-top: 2vh;
+    }
+
+    .Hr {
+        display: block;
+    }
+
+    .Laptops {
+        display: inline-flex;
+        width: 90vw;
+        height: 12vh;
+    }
+
+    .Edit {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .InputDiv {
+        position: relative;
+        bottom: 2vw;
+    }
 }

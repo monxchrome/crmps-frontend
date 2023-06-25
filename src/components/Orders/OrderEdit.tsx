@@ -8,6 +8,7 @@ import {SubmitHandler, useForm} from "react-hook-form";
 import {IOrder} from "../../interfaces/order.interface";
 import {orderActions} from "../../redux/slice/order.slice";
 import {useParams} from "react-router-dom";
+import {useIsMobile} from "../../hoc/MediaQuery";
 
 const OrderEdit: FC = () => {
     const [selectedGroup, setSelectedGroup] = useState(new Set(["Select"]));
@@ -23,7 +24,6 @@ const OrderEdit: FC = () => {
 
     const {handleSubmit, register, setValue} = useForm<IOrder>();
     const {orderForUpdate} = useAppSelector(state => state.orderReducer);
-    console.log(orderForUpdate);
 
     const handler = () => setVisible(true);
 
@@ -80,295 +80,341 @@ const OrderEdit: FC = () => {
         dispatch(orderActions.update({id: orderId, order}))
     };
 
+    const isMobile = useIsMobile()
+
     return (
-        <div>
-            <form onSubmit={handleSubmit(update)}>
-                <div className={css.Wrap}>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Group</Text>
+        <div className={css.Father}>
+            <div className={css.Others}>
+                <form onSubmit={handleSubmit(update)}>
+                    <div className={css.Wrap}>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Group</Text>
+                            </div>
+                            <div>
+                                <Dropdown>
+                                    <Dropdown.Button
+                                        flat
+                                        color="warning"
+                                        css={isMobile ? { tt: "capitalize", height: "4vh", width: "25vw" } : { tt: "capitalize", height: "4vh" }}
+                                        size={isMobile ? "lg" : "sm"}
+                                        auto
+                                    >
+                                        {selectedValueGroup}
+                                    </Dropdown.Button>
+                                    <Dropdown.Menu
+                                        aria-label="Single selection actions"
+                                        color="warning"
+                                        disallowEmptySelection
+                                        selectionMode="single"
+                                        selectedKeys={selectedGroup}
+                                        //@ts-ignore
+                                        onSelectionChange={(selected) => {
+                                            // @ts-ignore
+                                            setSelectedGroup(selected);
+                                            // @ts-ignore
+                                            register('group', { value: selected.anchorKey });
+                                        }}
+                                    >
+                                        {groups.map(group =>
+                                            <Dropdown.Item key={group.title}>{group.title}</Dropdown.Item>)
+                                        }
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </div>
+                            <div>
+                                <Button
+                                    onPress={handler}
+                                    className={css.Button}
+                                    auto
+                                    css={isMobile ? { height: "2vh", width: "25vw" } : { height: "3vh" }}>
+                                    Add Group
+                                </Button>
+                                <Modal
+                                    closeButton
+                                    aria-labelledby="modal-title"
+                                    open={visible}
+                                    onClose={closeHandler}
+                                >
+                                    <Modal.Header>
+                                        <Text b size={18}>
+                                            Group
+                                        </Text>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <GroupAdd/>
+                                    </Modal.Body>
+                                </Modal>
+                            </div>
                         </div>
-                        <div>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Status</Text>
+                            </div>
+                            <div>
+                                <Dropdown>
+                                    <Dropdown.Button
+                                        flat
+                                        color="warning"
+                                        css={isMobile ? { tt: "capitalize", height: "4vh", width: "25vw" } : { tt: "capitalize", height: "4vh" }}
+                                        auto>
+                                        {selectedValueStatus}
+                                    </Dropdown.Button>
+                                    <Dropdown.Menu
+                                        aria-label="Single selection actions"
+                                        color="warning"
+                                        disallowEmptySelection
+                                        selectionMode="single"
+                                        selectedKeys={selectedStatus}
+                                        //@ts-ignore
+                                        onSelectionChange={(selected) => {
+                                            // @ts-ignore
+                                            setSelectedStatus(selected);
+                                            // @ts-ignore
+                                            register('status', { value: selected.anchorKey });
+                                        }}
+                                    >
+                                        <Dropdown.Item key="inWork">In work</Dropdown.Item>
+                                        <Dropdown.Item key="new">New</Dropdown.Item>
+                                        <Dropdown.Item key="agree">Agree</Dropdown.Item>
+                                        <Dropdown.Item key="disagree">Disagree</Dropdown.Item>
+                                        <Dropdown.Item key="dubbing">Dubbing</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={css.Wrap2}>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Name</Text>
+                            </div>
+                            <form action="">
+                                <Input
+                                    clearable
+                                    underlined
+                                    placeholder="Write a name"
+                                    width="30vw"
+                                    size={isMobile ? "xl" : "sm"}
+                                    {...register('name')}
+                                />
+                            </form>
+                        </div>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Sum</Text>
+                            </div>
+                            <form action="">
+                                <Input
+                                    clearable
+                                    underlined
+                                    placeholder="Write a sum"
+                                    type="number"
+                                    size={isMobile ? "xl" : "sm"}
+                                    width="30vw"
+                                    {...register('sum')}
+                                />
+                            </form>
+                        </div>
+                    </div>
+                    <div className={css.Wrap2}>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Surname</Text>
+                            </div>
+                            <form action="">
+                                <Input
+                                    clearable
+                                    underlined
+                                    placeholder="Write a surname"
+                                    type="text"
+                                    size={isMobile ? "xl" : "sm"}
+                                    width="30vw"
+                                    {...register('surname')}
+                                />
+                            </form>
+                        </div>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Already paid</Text>
+                            </div>
+                            <form action="">
+                                <Input
+                                    clearable
+                                    underlined
+                                    placeholder="Write a already paid"
+                                    type="number"
+                                    size={isMobile ? "xl" : "sm"}
+                                    width="30vw"
+                                    {...register('already_paid')}
+                                />
+                            </form>
+                        </div>
+                    </div>
+
+                    <Spacer y={1}/>
+
+                    <div className={css.Wrap2}>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Email</Text>
+                            </div>
+                            <form action="">
+                                <Input
+                                    clearable
+                                    underlined
+                                    placeholder="Write an email"
+                                    type="text"
+                                    size={isMobile ? "xl" : "sm"}
+                                    width="30vw"
+                                    {...register('email')}
+                                />
+                            </form>
+                        </div>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Course</Text>
+                            </div>
                             <Dropdown>
-                                <Dropdown.Button flat color="warning" css={{ tt: "capitalize", height: "4vh" }} auto>
-                                    {selectedValueGroup}
+                                <Dropdown.Button
+                                    flat
+                                    color="warning"
+                                    css={isMobile ? { tt: "capitalize", height: "4vh", width: "25vw" } : { tt: "capitalize", height: "4vh" }}
+                                    auto>
+                                    {selectedValueCourse}
                                 </Dropdown.Button>
                                 <Dropdown.Menu
                                     aria-label="Single selection actions"
                                     color="warning"
                                     disallowEmptySelection
                                     selectionMode="single"
-                                    selectedKeys={selectedGroup}
+                                    selectedKeys={selectedCourse}
                                     //@ts-ignore
                                     onSelectionChange={(selected) => {
                                         // @ts-ignore
-                                        setSelectedGroup(selected);
+                                        setSelectedCourse(selected);
                                         // @ts-ignore
-                                        register('group', { value: selected.anchorKey });
+                                        register('course', { value: selected.anchorKey });
                                     }}
                                 >
-                                    {groups.map(group =>
-                                        <Dropdown.Item key={group.title}>{group.title}</Dropdown.Item>)
-                                    }
+                                    <Dropdown.Item key="FS">FS</Dropdown.Item>
+                                    <Dropdown.Item key="QACX">QACX</Dropdown.Item>
+                                    <Dropdown.Item key="JSCX">JSCX</Dropdown.Item>
+                                    <Dropdown.Item key="FE">FE</Dropdown.Item>
+                                    <Dropdown.Item key="PCX">PCX</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
-                        <div>
-                            <Button onPress={handler} className={css.Button} auto css={{height: "3vh"}}>Add Group</Button>
-                            <Modal
-                                closeButton
-                                aria-labelledby="modal-title"
-                                open={visible}
-                                onClose={closeHandler}
-                            >
-                                <Modal.Header>
-                                    <Text b size={18}>
-                                        Group
-                                    </Text>
-                                </Modal.Header>
-                                <Modal.Body>
-                                    <GroupAdd/>
-                                </Modal.Body>
-                            </Modal>
-                        </div>
                     </div>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Status</Text>
+                    <div className={css.Wrap2}>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Phone</Text>
+                            </div>
+                            <form action="">
+                                <Input
+                                    clearable
+                                    underlined
+                                    placeholder="Write a phone number"
+                                    type="text"
+                                    size={isMobile ? "xl" : "sm"}
+                                    width="30vw"
+                                    {...register('phone')}
+                                />
+                            </form>
                         </div>
-                        <div>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Course format</Text>
+                            </div>
                             <Dropdown>
-                                <Dropdown.Button flat color="warning" css={{ tt: "capitalize", height: "4vh" }} auto>
-                                    {selectedValueStatus}
+                                <Dropdown.Button
+                                    flat
+                                    color="warning"
+                                    size={isMobile ? "xl" : "sm"}
+                                    css={isMobile ? { tt: "capitalize", height: "4vh", width: "25vw" } : { tt: "capitalize", height: "4vh" }}
+                                    auto>
+                                    {selectedValueCourseFormat}
                                 </Dropdown.Button>
                                 <Dropdown.Menu
                                     aria-label="Single selection actions"
                                     color="warning"
                                     disallowEmptySelection
                                     selectionMode="single"
-                                    selectedKeys={selectedStatus}
+                                    selectedKeys={selectedCourseFormat}
                                     //@ts-ignore
                                     onSelectionChange={(selected) => {
                                         // @ts-ignore
-                                        setSelectedStatus(selected);
+                                        setSelectedCourseFormat(selected);
                                         // @ts-ignore
-                                        register('status', { value: selected.anchorKey });
+                                        register('course_format', { value: selected.anchorKey });
                                     }}
                                 >
-                                    <Dropdown.Item key="inWork">In work</Dropdown.Item>
-                                    <Dropdown.Item key="new">New</Dropdown.Item>
-                                    <Dropdown.Item key="agree">Agree</Dropdown.Item>
-                                    <Dropdown.Item key="disagree">Disagree</Dropdown.Item>
-                                    <Dropdown.Item key="dubbing">Dubbing</Dropdown.Item>
+                                    <Dropdown.Item key="static">static</Dropdown.Item>
+                                    <Dropdown.Item key="online">online</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </div>
                     </div>
-                </div>
-                <div className={css.Wrap2}>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Name</Text>
+                    <div className={css.Wrap2}>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Age</Text>
+                            </div>
+                            <form action="">
+                                <Input
+                                    clearable
+                                    underlined
+                                    placeholder="Write an age"
+                                    type="number"
+                                    size={isMobile ? "xl" : "sm"}
+                                    width="30vw"
+                                    {...register('age')}
+                                />
+                            </form>
                         </div>
-                        <form action="">
-                            <Input
-                                clearable
-                                underlined
-                                initialValue="Stefan"
-                                width="30vw"
-                                {...register('name')}
-                            />
-                        </form>
-                    </div>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Sum</Text>
+                        <div className={css.Mother}>
+                            <div>
+                                <Text className={css.GroupText} h4>Course type</Text>
+                            </div>
+                            <Dropdown>
+                                <Dropdown.Button
+                                    flat
+                                    color="warning"
+                                    css={isMobile ? { tt: "capitalize", height: "4vh", width: "25vw" } : { tt: "capitalize", height: "4vh" }}
+                                    auto>
+                                    {selectedValueCourseType}
+                                </Dropdown.Button>
+                                <Dropdown.Menu
+                                    aria-label="Single selection actions"
+                                    color="warning"
+                                    disallowEmptySelection
+                                    selectionMode="single"
+                                    selectedKeys={selectedCourseType}
+                                    //@ts-ignore
+                                    onSelectionChange={(selected) => {
+                                        // @ts-ignore
+                                        setSelectedCourseType(selected);
+                                        // @ts-ignore
+                                        register('course_type', { value: selected.anchorKey });
+                                    }}
+                                >
+                                    <Dropdown.Item key="pro">Pro</Dropdown.Item>
+                                    <Dropdown.Item key="minimal">Minimal</Dropdown.Item>
+                                    <Dropdown.Item key="premium">Premium</Dropdown.Item>
+                                    <Dropdown.Item key="incubator">Incubator</Dropdown.Item>
+                                    <Dropdown.Item key="vip">Vip</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                         </div>
-                        <form action="">
-                            <Input
-                                clearable
-                                underlined
-                                initialValue="2000"
-                                type="number"
-                                width="30vw"
-                            />
-                        </form>
                     </div>
-                </div>
-                <div className={css.Wrap2}>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Surname</Text>
-                        </div>
-                        <form action="">
-                            <Input
-                                clearable
-                                underlined
-                                initialValue="Samokhval"
-                                type="text"
-                                width="30vw"
-                            />
-                        </form>
+                    <div className={css.ButtonDiv}>
+                        <Button shadow color="success" className={css.Submit} auto type="submit">
+                            Submit
+                        </Button>
                     </div>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Already paid</Text>
-                        </div>
-                        <form action="">
-                            <Input
-                                clearable
-                                underlined
-                                initialValue="2000"
-                                type="number"
-                                width="30vw"
-                            />
-                        </form>
-                    </div>
-                </div>
-
-                <Spacer y={1}/>
-
-                <div className={css.Wrap2}>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Email</Text>
-                        </div>
-                        <form action="">
-                            <Input
-                                clearable
-                                underlined
-                                initialValue="testmail@gmail.com"
-                                type="text"
-                                width="30vw"
-                            />
-                        </form>
-                    </div>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Course</Text>
-                        </div>
-                        <Dropdown>
-                            <Dropdown.Button flat color="warning" css={{ tt: "capitalize", height: "4vh" }} auto>
-                                {selectedValueCourse}
-                            </Dropdown.Button>
-                            <Dropdown.Menu
-                                aria-label="Single selection actions"
-                                color="warning"
-                                disallowEmptySelection
-                                selectionMode="single"
-                                selectedKeys={selectedCourse}
-                                //@ts-ignore
-                                onSelectionChange={(selected) => {
-                                    // @ts-ignore
-                                    setSelectedCourse(selected);
-                                    // @ts-ignore
-                                    register('course', { value: selected.anchorKey });
-                                }}
-                            >
-                                <Dropdown.Item key="FS">FS</Dropdown.Item>
-                                <Dropdown.Item key="QACX">QACX</Dropdown.Item>
-                                <Dropdown.Item key="JSCX">JSCX</Dropdown.Item>
-                                <Dropdown.Item key="FE">FE</Dropdown.Item>
-                                <Dropdown.Item key="PCX">PCX</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
-                </div>
-                <div className={css.Wrap2}>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Phone</Text>
-                        </div>
-                        <form action="">
-                            <Input
-                                clearable
-                                underlined
-                                initialValue="+380675555555"
-                                type="text"
-                                width="30vw"
-                            />
-                        </form>
-                    </div>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Course format</Text>
-                        </div>
-                        <Dropdown>
-                            <Dropdown.Button flat color="warning" css={{ tt: "capitalize", height: "4vh" }} auto>
-                                {selectedValueCourseFormat}
-                            </Dropdown.Button>
-                            <Dropdown.Menu
-                                aria-label="Single selection actions"
-                                color="warning"
-                                disallowEmptySelection
-                                selectionMode="single"
-                                selectedKeys={selectedCourseFormat}
-                                //@ts-ignore
-                                onSelectionChange={(selected) => {
-                                    // @ts-ignore
-                                    setSelectedCourseFormat(selected);
-                                    // @ts-ignore
-                                    register('course_format', { value: selected.anchorKey });
-                                }}
-                            >
-                                <Dropdown.Item key="static">static</Dropdown.Item>
-                                <Dropdown.Item key="online">online</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
-                </div>
-                <div className={css.Wrap2}>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Age</Text>
-                        </div>
-                        <form action="">
-                            <Input
-                                clearable
-                                underlined
-                                initialValue="18"
-                                type="number"
-                                width="30vw"
-                            />
-                        </form>
-                    </div>
-                    <div className={css.Mother}>
-                        <div>
-                            <Text className={css.GroupText} h4>Course type</Text>
-                        </div>
-                        <Dropdown>
-                            <Dropdown.Button flat color="warning" css={{ tt: "capitalize", height: "4vh" }} auto>
-                                {selectedValueCourseType}
-                            </Dropdown.Button>
-                            <Dropdown.Menu
-                                aria-label="Single selection actions"
-                                color="warning"
-                                disallowEmptySelection
-                                selectionMode="single"
-                                selectedKeys={selectedCourseType}
-                                //@ts-ignore
-                                onSelectionChange={(selected) => {
-                                    // @ts-ignore
-                                    setSelectedCourseType(selected);
-                                    // @ts-ignore
-                                    register('course_type', { value: selected.anchorKey });
-                                }}
-                            >
-                                <Dropdown.Item key="pro">Pro</Dropdown.Item>
-                                <Dropdown.Item key="minimal">Minimal</Dropdown.Item>
-                                <Dropdown.Item key="premium">Premium</Dropdown.Item>
-                                <Dropdown.Item key="incubator">Incubator</Dropdown.Item>
-                                <Dropdown.Item key="vip">Vip</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
-                </div>
-                <div className={css.ButtonDiv}>
-                    <Button shadow color="success" className={css.Submit} auto type="submit">
-                        Submit
-                    </Button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     );
 };

@@ -1,9 +1,87 @@
-.Father {
-    display: grid;
-    justify-content: center;
+/*Small portrait phones*/
+@media (max-width: 575.98px) {
+    .Father {
+        display: grid;
+        justify-content: center;
+    }
+
+    .Button {
+        margin-top: 3vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+    }
 }
 
-.Button {
-    margin-top: 3vh;
-    margin-left: 20vw;
+/* Small phones with landscape */
+@media (max-width: 767.98px) and (min-width: 575.98px) {
+    .Father {
+        display: grid;
+        justify-content: center;
+    }
+
+    .Button {
+        margin-top: 3vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* Medium pads */
+@media (max-width: 991.98px) and (min-width: 767.98px) {
+    .Father {
+        padding: 2vh;
+        display: grid;
+        justify-content: center;
+    }
+
+    .Button {
+        margin-top: 3vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* X-Large computers */
+@media (max-width: 1399.98px) and (min-width: 1199.98px) {
+    .Father {
+        padding: 10vh;
+        display: grid;
+        justify-content: center;
+    }
+
+    .Button {
+        margin-top: 3vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+/* XX-Large computers */
+@media (min-width: 1399.98px) {
+    .Father {
+        padding: 10vh;
+        display: grid;
+        justify-content: center;
+    }
+
+    .Button {
+        margin-top: 3vh;
+    }
+
+    .ButtonDiv {
+        display: flex;
+        justify-content: center;
+    }
 }

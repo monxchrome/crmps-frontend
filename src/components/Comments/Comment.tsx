@@ -13,13 +13,13 @@ const Comment = ({comment, user}: {comment: any, user: any}) => {
     return (
         <div className={css.Father}>
             <div>
-                <Text h6>{title}</Text>
+                <Text h6 className={css.Text}>{title}</Text>
             </div>
             <div>
-                <Text h6>{email}</Text>
+                <Text h6 className={css.Text}>{email}</Text>
             </div>
             <div>
-                <Text h6>{formattedDate}</Text>
+                <Text h6 className={css.Text}>{formattedDate}</Text>
             </div>
         </div>
     );

@@ -1,4 +1,52 @@
-.Father {
-    display: flex;
-    justify-content: space-evenly;
+
+/*Small portrait phones*/
+@media (max-width: 575.98px) {
+    .Father {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+/* Small phones with landscape */
+@media (max-width: 767.98px) and (min-width: 575.98px) {
+    .Father {
+        display: flex;
+        justify-content: space-evenly;
+    }
+}
+
+/* Medium pads */
+@media (max-width: 991.98px) and (min-width: 767.98px) {
+    .Father {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .Text {
+        font-size: 1.5rem;
+    }
+}
+
+/* X-Large computers */
+@media (max-width: 1399.98px) and (min-width: 1199.98px) {
+    .Father {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .Text {
+        font-size: 1rem;
+    }
+}
+
+/* XX-Large computers */
+@media (min-width: 1399.98px) {
+    .Father {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .Text {
+        font-size: 1rem;
+    }
 }

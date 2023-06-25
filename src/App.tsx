@@ -6,6 +6,8 @@ import css from './App.module.css'
 import LoginPage from "./pages/LoginPage";
 import OrderDetailsPage from "./pages/OrderDetailsPage";
 import {RequiredAuth} from "./hoc/RequiredAuth";
+import E404Page from "./pages/E404Page";
+import E422Page from "./pages/E422Page";
 
 const App:FC = () => {
   return (
@@ -27,6 +29,10 @@ const App:FC = () => {
                 </RequiredAuth>
             }/>
         </Route>
+
+          <Route path={'*'} element={<E404Page/>}/>
+          <Route path={'/422'} element={<E422Page/>}/>
+
       </Routes>
     </div>
   );

@@ -5,19 +5,38 @@ import {IPagination} from "../interfaces/pagination.interface";
 import {IOrder} from "../interfaces/order.interface";
 
 class OrderService {
-    getAll(page= 1, nameGte?: string, nameLte?: string): IRes<IPagination<IOrder[]>> {
-        const params: any = { page };
+    getAll(params: any): IRes<IPagination<IOrder[]>> {
+        const queryParams: any = { page: params.page };
 
-        if (nameGte) {
-            params["name[gte]"] = nameGte;
+        const parameterKeys = [
+            "name",
+            "surname",
+            "email",
+            "phone",
+            "age",
+            "course",
+            "course_format",
+            "course_type",
+            "status",
+            "sum",
+            "already_paid"
+        ];
+
+        for (const key of parameterKeys) {
+            const gteValue = params[`${key}Gte`];
+            const lteValue = params[`${key}Lte`];
+
+            if (gteValue) {
+                queryParams[`${key}[gte]`] = gteValue;
+            }
+
+            if (lteValue) {
+                queryParams[`${key}[lte]`] = lteValue;
+            }
         }
 
-        if (nameLte) {
-            params["name[lte]"] = nameLte;
-        }
-
-        return axiosService.get(urls.orders.orders, { params });
-    }
+        return axiosService.get(urls.orders.orders, { params: queryParams });
+    };
 
     getById(id: string): IRes<IPagination<IOrder[]>> {
         return axiosService.get(urls.orders.byId(id))
