@@ -1,1 +1,1 @@
-export * from './GroupEdit'
+export * from "./GroupEdit";

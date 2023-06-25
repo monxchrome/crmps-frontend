@@ -1,2 +1,2 @@
-export * from './axiosRes.type'
-export * from './waitList.type'
+export * from "./axiosRes.type";
+export * from "./waitList.type";

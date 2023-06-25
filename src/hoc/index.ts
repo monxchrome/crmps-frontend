@@ -1,2 +1,2 @@
-export * from './MediaQuery'
-export * from './RequiredAuth'
+export * from "./MediaQuery";
+export * from "./RequiredAuth";
