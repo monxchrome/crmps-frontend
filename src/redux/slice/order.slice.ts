@@ -35,6 +35,7 @@ const getAll = createAsyncThunk<IPagination<IOrder[]>, { page: string }>(
   "orderSlice/getAll",
   async (params: any, { rejectWithValue }) => {
     try {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       await new Promise((resolve) => setTimeout(() => resolve(), 1500));
       const { data } = await orderService.getAll(params);

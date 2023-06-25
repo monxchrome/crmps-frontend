@@ -18,7 +18,7 @@ const LoginForm = () => {
     formState: { isValid },
   } = useForm<IAuth>();
 
-    const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
 
   const login: SubmitHandler<IAuth> = async (admin) => {
     const {

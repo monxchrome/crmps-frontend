@@ -1,46 +1,104 @@
-# Getting Started with Create React App
+# CRMPS Frontend
+## _By Samokhval Stefan_
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+____
 
-## Available Scripts
+Customer relationship management (CRM) is a technology for managing all your company’s relationships and interactions with customers and potential customers. The goal is simple: Improve business relationships to grow your business. A CRM system helps companies stay connected to customers, streamline processes, and improve profitability.
 
-In the project directory, you can run:
+____
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Loading Page
+- Errors Page
+- Sorts
+- Animated mesh gradient background
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+____
 
-### `npm test`
+## Tech
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+CRMPS uses a number of open source projects to work properly:
 
-### `npm run build`
+- [Intellij Idea](https://www.jetbrains.com/idea/) - awesome code editor
+- [React.js](https://react.dev/) - evented I/O for the frontend
+- [MUI](https://mui.com/) - MUI offers a comprehensive suite of UI tools to help you ship new features faster.
+- [NextUI](https://nextui.org/) - Beautiful, fast and modern React UI library.
+- [Axios](https://axios-http.com/) - Axios is a simple promise based HTTP client for the browser and node.js.
+- [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
+- [React hook form](https://react-hook-form.com/) - Performant, flexible and extensible forms with easy-to-use validation.
+- [React router dom](https://reactrouter.com/) - It will quickly introduce you to the primary features of React Router: from configuring routes, to loading and mutating data, to pending and optimistic UI.
+- [Typescript](https://www.typescriptlang.org/) - strongly typed programming language that builds on JavaScript.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+____
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+CRMPS requires [Node.js](https://nodejs.org/) v19.7+ to run.
 
-### `npm run eject`
+____
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Install the dependencies and devDependencies and start the server via npm.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+cd crmps-frontend
+npm i
+npm start
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Or using via yarn
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
+cd crmps-frontend
+yarn install
+yarn start
+```
 
-## Learn More
+____
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Want to contribute? Great!
+
+CRMPS uses nodemon + eslint for fast developing.
+Make a change in your file and instantaneously see your updates!
+
+- [X] Backend
+    - [X] Pagination
+    - [X] Users
+    - [X] Comments
+    - [X] Group
+    - [X] Auth
+    - [X] Sort
+    - [X] Documentation
+    - [X] Swagger
+
+- [X] Frontend
+    - [X] Figma mobile design
+    - [X] Figma PC design
+    - [X] Figma iPad design
+    - [X] Main Page
+    - [X] Query
+    - [X] Details
+    - [X] Edit
+    - [X] Comments
+    - [X] Documentation
+
+## How it works
+
+```mermaid
+erDiagram
+    APP ||--o{ ROUTES : someRoutes
+    ROUTES ||--|{ REDUX : ValidatorsAndDispatches
+    REDUX ||--|{ SERVICES : RequestsToBackend
+    SERVICES ||--|{ DISPATCH : UpdatesToComponents
+    DISPATCH}o--|{ COMPONENTS : RequestsToComponents
+    COMPONENTS}o--|{ PAGES : RenderingComponents
+    PAGES}o--|{ ROUTES : RequestsToRoutes
+    ROUTES}o--|{ APP : RenderingApp
+    APP }|--|{ BACKEND : connectToBackend
+    BACKEND }|--|{ DATABASE : connectBackendToDatabase
+    DATABASE }|--|{ SERVER : requestsToDatabase
+    SERVER }|--|{ LOCALHOST : runningServer
+    BACKEND }|--|{ SERVER : connectBackendToServer
+```
